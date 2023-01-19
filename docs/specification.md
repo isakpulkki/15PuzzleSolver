@@ -1,4 +1,4 @@
-# Specification document
+# Specification document :eight_spoked_asterisk:
 
 This aim of this project is to implement a GUI program, where the user can fill in the slots with numbers for the 15 Puzzle, and then execute it to show the
 optimal moves step by step to solve it. 
