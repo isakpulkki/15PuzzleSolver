@@ -5,7 +5,7 @@ and then execute it to show the optimal moves step by step to solve it.
 
 ## Documentation
 
-* [Specification document](https://github.com/isakpulkki/15PuzzleSolver.git)
+* [Specification document](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/specification.md)
 
 ## Weekly raports
 
