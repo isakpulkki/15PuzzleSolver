@@ -22,3 +22,7 @@ Next week I will start the Python project and first implement graphical user int
 
 I also will also implement unit tests for this program. I hope that I have working runnable program for the deadline.
 
+## Hours used
+
+I used approx 4-5 hours figuring out my topic and researching about different algorithms.
+
