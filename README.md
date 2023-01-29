@@ -11,6 +11,4 @@ and then execute it to show the optimal moves step by step to solve it.
 
 * [Week 1](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week1.md)
 
-![GHA workflow badge](https://github.com/isakpulkki/15puzzlesolver/workflows/CI/badge.svg)
-
-[![codecov](https://codecov.io/gh/isakpulkki/15PuzzleSolver/branch/main/graph/badge.svg?token=QCJD3KYHM7)](https://codecov.io/gh/isakpulkki/15PuzzleSolver)
+![GHA workflow badge](https://github.com/isakpulkki/15puzzlesolver/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/isakpulkki/15PuzzleSolver/branch/main/graph/badge.svg?token=QCJD3KYHM7)](https://codecov.io/gh/isakpulkki/15PuzzleSolver)
