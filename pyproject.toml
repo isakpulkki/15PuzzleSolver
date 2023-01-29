@@ -6,7 +6,7 @@ authors = ["isakpulkki <isak@pulkki.me>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 pygame = "^2.1.2"
 invoke = "^2.0.0"
 coverage = "^7.1.0"
