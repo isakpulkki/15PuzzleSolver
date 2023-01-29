@@ -1,5 +1,10 @@
 # Week 2
 
+* Created the Puzzle object
+* Created the main application using pygame
+* Created unittests
+* Added CI, Codecov and instructions
+
 ## What I have done
 
 I started doing actual work and coding. Coded the Puzzle component and functionalities for it, implemented the UI with pygame library and ended up with runnable application still without functionalities for user input. Made unittests for the Puzzle object, added CI and Codecov. Made instructions how to use the program.
