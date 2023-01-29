@@ -1,6 +1,6 @@
 import unittest
 
-from puzzle import Puzzle
+from src.puzzle import Puzzle
 
 
 class TestPuzzle(unittest.TestCase):
