@@ -10,3 +10,5 @@ and then execute it to show the optimal moves step by step to solve it.
 ## Weekly raports
 
 * [Week 1](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week1.md)
+
+![GHA workflow badge](https://github.com/isakpulkki/15puzzlesolver/workflows/CI/badge.svg)
