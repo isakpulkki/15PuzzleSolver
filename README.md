@@ -24,6 +24,6 @@ $ poetry run invoke test
 
 * [Week 1](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week1.md)
 * [Week 2](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week2.md)
-* [Week 2](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week3.md)
+* [Week 3](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week3.md)
 
 ![CI Badge](https://github.com/isakpulkki/15puzzlesolver/workflows/CI/badge.svg) [![Codecov badge](https://codecov.io/gh/isakpulkki/15PuzzleSolver/branch/main/graph/badge.svg?token=QCJD3KYHM7)](https://codecov.io/gh/isakpulkki/15PuzzleSolver)
