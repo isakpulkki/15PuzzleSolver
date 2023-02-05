@@ -1,6 +1,6 @@
 import unittest
 
-from src.puzzle import Puzzle
+from src.logic.puzzle import Puzzle
 
 
 class TestPuzzle(unittest.TestCase):
