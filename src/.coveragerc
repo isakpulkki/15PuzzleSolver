@@ -1,0 +1,13 @@
+[run]
+source = src
+omit = src/tests/**
+       src/ui/**
+       src/static/**
+       src/app.py
+
+[report]
+source = src
+omit = src/tests/**
+       src/ui/**
+       src/static/**
+       src/app.py
