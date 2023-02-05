@@ -88,6 +88,17 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "pygame-button"
+version = "0.0.3"
+description = "A very simple button class for pygame."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+pygame = "*"
+
+[[package]]
 name = "pytest"
 version = "7.2.1"
 description = "pytest: simple powerful testing with Python"
@@ -117,8 +128,8 @@ python-versions = ">=3.7"
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.9"
-content-hash = "9a2ac5f8f74dd86a61350445f1968004770c390f6c2d58b5e44a2892dce8bb6f"
+python-versions = "^3.8"
+content-hash = "5775e8c1895c412540ee75b86a406cfd07c3ee62054c949c45b31cdc1caea69b"
 
 [metadata.files]
 attrs = [
@@ -261,6 +272,10 @@ pygame = [
     {file = "pygame-2.1.2-pp37-pypy37_pp73-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:7fdb93b4282962c9a2ebf1af994ee698be823dd913218ed97a5f2fb372b10b66"},
     {file = "pygame-2.1.2-pp37-pypy37_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:1fddec8829e96424800c806582d73a5173b7d48946cccf7d035839ca09850db8"},
     {file = "pygame-2.1.2.tar.gz", hash = "sha256:d6d0eca28f886f0477cd0721ac688189155a587f2bb8eae740e52ca56c3ad23c"},
+]
+pygame-button = [
+    {file = "pygame_button-0.0.3-py3-none-any.whl", hash = "sha256:716689552beb3c40c2adf690cdee8bfd42348e8faa9f9adc9f7565e20eec9a8e"},
+    {file = "pygame_button-0.0.3.tar.gz", hash = "sha256:471fd63db8cf9d0acc23c974cf1b119eadacb7c0afd07ef4531c6bc03863f722"},
 ]
 pytest = [
     {file = "pytest-7.2.1-py3-none-any.whl", hash = "sha256:c7c6ca206e93355074ae32f7403e8ea12163b1163c976fee7d4d84027c162be5"},
