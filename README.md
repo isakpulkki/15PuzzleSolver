@@ -18,7 +18,8 @@ $ poetry run invoke test
 ```
 ## Documentation
 
-* [Specification document](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/specification.md)
+* [Specification Document](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/specification.md)
+* [Testing Document](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/testing.md)
 
 ## Raports
 
