@@ -41,3 +41,6 @@ class TestPuzzle(unittest.TestCase):
         test_board = self.puzzle.board[0][:]
         self.puzzle.shuffle_board(999)
         self.assertNotEqual(self.puzzle.board[0], test_board)
+    
+    def test_has_been_solved(self):
+        self.assertTrue(self.puzzle.is_solved())
