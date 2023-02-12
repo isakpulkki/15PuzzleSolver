@@ -26,14 +26,15 @@ $ poetry run invoke test
 
 ## Documentation
 
-* [Specification Document](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/specification.md)
-* [Testing Document](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/testing.md)
-* [Implementation Document](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/implementation.md)
+* [Specification](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/specification.md)
+* [Testing](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/testing.md)
+* [Implementation](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/implementation.md)
 
 ## Raports
 
 * [Week 1](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week1.md)
 * [Week 2](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week2.md)
 * [Week 3](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week3.md)
+* [Week 4](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week4.md)
 
 ![CI Badge](https://github.com/isakpulkki/15puzzlesolver/workflows/CI/badge.svg) [![Codecov badge](https://codecov.io/gh/isakpulkki/15PuzzleSolver/branch/main/graph/badge.svg?token=QCJD3KYHM7)](https://codecov.io/gh/isakpulkki/15PuzzleSolver)
