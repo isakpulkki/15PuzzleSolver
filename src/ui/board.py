@@ -30,6 +30,8 @@ class Board(tk.Frame):
             row = []
             for y in range(puzzle.size):
                 number = puzzle.get_number(x, y)
+                if number == 0:
+                    number = ""
                 background = TILE_COLOR if number else BACKGROUND_COLOR
                 frame = tk.Frame(self.board, bg=background,
                                  width=piece_width, height=piece_width)
@@ -50,6 +52,8 @@ class Board(tk.Frame):
             y (int): Y-coordinate of the cell to update.
             number (int): The new number to set for the cell.
         """
+        if number == 0:
+            number = ""
         background = TILE_COLOR if number else BACKGROUND_COLOR
         self.cells[x][y]["frame"].configure(bg=background)
         self.cells[x][y]["number"].configure(
