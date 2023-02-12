@@ -4,8 +4,6 @@ omit = src/tests/**
        src/ui/**
        src/static/**
        src/app.py
-       exclude_lines =
-    if __name__ == .__main__.:
 
 [report]
 source = src
@@ -13,5 +11,3 @@ omit = src/tests/**
        src/ui/**
        src/static/**
        src/app.py
-       exclude_lines =
-    if __name__ == .__main__.:
