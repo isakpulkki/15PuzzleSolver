@@ -1,15 +1,14 @@
-# Specification document
+# Specification Document
 
-This aim of this project is to implement a GUI program, where the user can play the 15 Puzzle game, and click a button to show the optimal moves step by step to solve it. 
+The goal of this project is to create a GUI program that allows the user to play the 15 Puzzle game using mouse input and possibility to shuffle the board. Additionally, the program will provide a button to display the optimal moves required to solve the Puzzle with Iterative Deepening A* algorithm using pattern database as heuristics.
 
-I am also capable of programming in Java and can also do the peer reviews for those projects. I am a student for  bachelor’s in computer science. 
-Documentation is done using Markdown.
+I am also capable of programming in Java and can also do the peer reviews for those projects. I am a student for  bachelor’s in computer science. Documentation is done using Markdown.
 
-## Algorithms and time complexity
+## Algorithms and Time Complexity
 
-The program will use IDA* algorithm to solve the optimal path and the progam wil be programmed by Python. The heuristic function the program should use is Manhattan distance. For data structures, the program could use map for storing the nodes visited and a stack to to manage stages of the recursion.
+The program will utilize Python and IDA* algorithm with heuristics to discover the optimal solution to the n-puzzle problem. Initially, the heuristic function chosen was Manhattan distance and linear conflicts. However, due to the full pattern database's size for the 15 puzzle, the program will employ the additive pattern database. The pattern builder will adopt a double-ended queue and hashmaps for nodes storage.
 
-The programs worst case scenario for time complexity should be O(b<sup>d</sup>), since the algorithm is ultimately doing breadth-first-search and the space should be O(d), where d is the depth the algorithm is on.
+The worst-case scenario for time complexities of the additive pattern databases and IDA* algorithms should be O(b<sup>d</sup>) since the algorithm is essentially performing breadth-first search, where 'b' denotes the branching factor. The space complexity should be O(d), where d is the algorithm's depth.
 
 ## Sources
 
