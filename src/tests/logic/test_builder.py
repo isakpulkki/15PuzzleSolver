@@ -1,8 +1,8 @@
 import unittest
-from src.logic.pattern_builder import PatternBuilder
+from src.logic.builder import PatternBuilder
+
 class TestPatternBuilder(unittest.TestCase):
     def setUp(self):
-
         self.pattern_builder = PatternBuilder({1, 2, 3})
     
     def test_visit_initial_visited_set_is_empty(self):

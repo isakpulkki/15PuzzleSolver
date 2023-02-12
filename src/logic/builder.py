@@ -74,7 +74,8 @@ class PatternBuilder():
 
         return True
 
-if __name__ == '__main__': # pragma: no cover
+
+def main(): 
     """This is the main function of the pattern builder. You can set different groupings if you want to. 
     The patterns are independent, so they can be assigned to their own processes. 
     This function also stores the pattern data to a file for later use.
@@ -93,3 +94,7 @@ if __name__ == '__main__': # pragma: no cover
     with open('patterns.dat', 'wb') as file:
         pickle.dump([x.group for x in patterns], file)
         pickle.dump(closed_list, file)
+
+
+if __name__ == '__main__':
+    main()
