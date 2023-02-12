@@ -2,9 +2,12 @@ from invoke import task
 
 @task
 def start(ctx):
-    ctx.run("python src/app.py", pty=True)
-
+    ctx.run("python3 src/app.py", pty=True)
 
 @task
 def test(ctx):
-    ctx.run("pytest src", pty=True)
+    ctx.run("python3 -m pytest src", pty=True)
+
+@task
+def build(ctx):
+    ctx.run("python3 -m src.logic.pattern_builder", pty=True)
