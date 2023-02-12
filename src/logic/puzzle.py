@@ -1,3 +1,4 @@
+from copy import deepcopy
 from random import randrange
 
 
@@ -8,8 +9,8 @@ class Puzzle:
         """Initializes a new puzzle using 2-dimensional array, setting their numbers and shuffling the numbers."""
         self.size = size
         self.board = [[0] * self.size for _ in range(self.size)]
-        self.pos = [self.size - 1, self.size - 1]
-        self.moves = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+        self.position = [self.size - 1, self.size - 1]
+        self.directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
 
     def set_numbers(self):
         """Sets the numbers to the board, and leaves blank space at the end for the game.
@@ -17,7 +18,7 @@ class Puzzle:
         for x in range(self.size):
             for y in range(self.size):
                 self.board[x][y] = (x * self.size) + (y + 1)
-        self.board[self.pos[0]][self.pos[1]] = ""
+        self.board[self.position[0]][self.position[1]] = 0
 
     def get_number(self, x: int, y: int):
         """Get a number from a location in the board.
@@ -32,20 +33,20 @@ class Puzzle:
         return self.board[x][y]
 
     def move_number(self, direction: list):
-        """Moves a number from some direction to the blank pos.
+        """Moves a number from some direction to the blank position.
 
         Args:
             direction (list): x and y coordinates to move to
         """
-        if direction in self.moves:
-            new_pos = [self.pos[0] + direction[0],
-                       self.pos[1] + direction[1]]
-            if new_pos[0] < 0 or new_pos[1] < 0 or new_pos[0] >= self.size or new_pos[1] >= self.size:
+        if direction in self.directions:
+            new_position = [self.position[0] + direction[0],
+                            self.position[1] + direction[1]]
+            if new_position[0] < 0 or new_position[1] < 0 or new_position[0] >= self.size or new_position[1] >= self.size:
                 return False
-            self.board[self.pos[0]][self.pos[1]
-                                    ] = self.board[new_pos[0]][new_pos[1]]
-            self.board[new_pos[0]][new_pos[1]] = ""
-            self.pos = new_pos
+            self.board[self.position[0]][self.position[1]
+                                         ] = self.board[new_position[0]][new_position[1]]
+            self.board[new_position[0]][new_position[1]] = 0
+            self.position = new_position
             return True
         return False
 
@@ -55,5 +56,53 @@ class Puzzle:
         Args:
             times (int): how many times to move the pieces
         """
-        for i in range(times):
-            self.move_number(self.moves[randrange(4)])
+        for _ in range(times):
+            self.move_number(self.directions[randrange(4)])
+
+    def hash(self, group):
+        """This is the hash function for the pattern builder, to give each permutation
+        unique hash to keep count of the visited nodes.
+
+        Args:
+            group (dict): This is the group of numbers which will be included in the hash.
+
+        Returns:
+            str: The hash as a String.
+        """
+        puzzle_hash = [""]*2*(self.size**2)
+
+        for i in range(self.size):
+            for j in range(self.size):
+                if self[i][j] in group:
+                    puzzle_hash[2*self[i][j]] = str(i)
+                    puzzle_hash[2*self[i][j]+1] = str(j)
+
+        return "".join(puzzle_hash)
+
+    def simulate(self, direction):
+        """This will generate a new Puzzle, and move the blank square to a new position,
+        giving us a new permutation.
+
+        Args:
+            direction (list): Coordinates of the direction the blank square should move to.
+
+        Returns:
+            Puzzle: The copied Puzzle with move made.
+        """
+        puzzle_copy = deepcopy(self)
+        return puzzle_copy if puzzle_copy.move_number(direction) else False
+
+    def is_solved(self):
+        """Checks if the Puzzle has been solved.
+
+        Returns:
+            bool: True if solved.
+        """        
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.board[i][j] not in [i * self.size + j + 1, 0]:
+                    return False
+        return True
+
+    def __getitem__(self, key):
+        return self.board[key]
