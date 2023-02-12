@@ -1,10 +1,14 @@
 # 15PuzzleSolver
 
-This aim of this project is to implement a GUI program, where the user can play the 15 Puzzle game, and click a button to show the optimal moves step by step to solve it.
+This project will be a GUI program that allows users to play the 15 Puzzle game and display optimal moves to solve it by clicking a button. The implementation uses the IDA* algorithm with an additive pattern database as a heuristic to find the optimal path. 
+
+The IDA* algorithm is in its final stages of development and will be integrated into the GUI program shortly. Meanwhile, the pattern builder is completed and is ready for testing.
 
 ## Instructions
 
-You need to have Python installed with Poetry to be able to run this application. Clone the repository to your desired path.
+To run this application, you must have Python3 and Poetry installed. Clone the repository to your preferred location. 
+
+The repository comes with a pre-built additive pattern database that has a grouping of (5, 5, 5), but if you want to customize the groupings, you can easily do so by modifying the code and rebuilding the database.
 
 ```bash
 # Install dependencies
@@ -13,13 +17,18 @@ $ poetry install
 # Run the application
 $ poetry run invoke start
 
+# Build a new pattern database
+$ poetry run invoke build
+
 # Run the tests
 $ poetry run invoke test
 ```
+
 ## Documentation
 
 * [Specification Document](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/specification.md)
 * [Testing Document](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/testing.md)
+* [Implementation Document](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/implementation.md)
 
 ## Raports
 
