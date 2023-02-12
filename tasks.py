@@ -10,4 +10,4 @@ def test(ctx):
 
 @task
 def build(ctx):
-    ctx.run("python3 -m src.logic.pattern_builder", pty=True)
+    ctx.run("python3 -m src.logic.builder", pty=True)

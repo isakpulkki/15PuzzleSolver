@@ -1,7 +1,6 @@
 from copy import deepcopy
 from random import randrange
 
-
 class Puzzle:
     """Object representing the puzzle."""
 
