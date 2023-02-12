@@ -50,13 +50,13 @@ class Application(tk.Tk):
 
     def update_number(self, x, y):
         """
-        Attempts to move the number at the given position (x, y) in the puzzle and updates the number of moves.
+        Attempts to move the number at the given positionition (x, y) in the puzzle and updates the number of moves.
         Args:
             x (int): x-coordinate of the number to be moved.
             y (int): y-coordinate of the number to be moved.
         """
-        direction = [x - self.puzzle.pos[0],
-                     y - self.puzzle.pos[1]]
+        direction = [x - self.puzzle.position[0],
+                     y - self.puzzle.position[1]]
         if self.puzzle.move_number(direction):
             self.moves += 1
         self.update()
