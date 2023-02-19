@@ -4,7 +4,7 @@ from random import randrange
 class Puzzle:
     """Object representing the puzzle."""
 
-    def __init__(self, size=4):
+    def __init__(self, size = 4):
         """Initializes a new puzzle using 2-dimensional array, setting their numbers and shuffling the numbers."""
         self.size = size
         self.board = [[0] * self.size for _ in range(self.size)]
@@ -14,9 +14,7 @@ class Puzzle:
     def set_numbers(self):
         """Sets the numbers to the board, and leaves blank space at the end for the game.
         """
-        for x in range(self.size):
-            for y in range(self.size):
-                self.board[x][y] = (x * self.size) + (y + 1)
+        self.board = [[(x * self.size) + (y + 1) for y in range(self.size)] for x in range(self.size)]
         self.board[self.position[0]][self.position[1]] = 0
 
     def get_number(self, x: int, y: int):
@@ -78,7 +76,7 @@ class Puzzle:
 
         return "".join(puzzle_hash)
 
-    def simulate(self, direction):
+    def simulate(self, direction: list):
         """This will generate a new Puzzle, and move the blank square to a new position,
         giving us a new permutation.
 
