@@ -18,25 +18,25 @@ class PatternBuilder():
         self.group = group
         self.blank_group = group.copy()
         self.blank_group.add(0)
+        self.visited = set()
+        self.closed_list = {}
+        self.open_list = deque()
 
     def build_patterns(self):
         """The method starts with the solved Puzzle and applies BFS to all possible permutations of the Puzzle
         within the group. It uses a queue to store the current permutation and its previous direction.
-        The method checks if the permutation has been visited before, and if not, adds it to the visited set.
+        The method checks if the permutation has been self.visited before, and if not, adds it to the self.visited set.
         It then simulates the Puzzle to every direction and creates a new permutation only if the moved piece is
         in the group. The move is added to the permutation only if the other moves belong to the same group.
 
         Returns:
             dict: This is the closed list with all of the permutations of the group.
         """
-        visited = set()
-        closed_list = {}
-        open_list = deque()
-        open_list.append((self.puzzle, [0, 0]))
+        self.open_list.append((self.puzzle, [0, 0]))
 
-        while open_list:
-            puzzle, previous = open_list.popleft()
-            if self.visit(puzzle, visited, closed_list):
+        while self.open_list:
+            puzzle, previous = self.open_list.popleft()
+            if self.visit(puzzle):
                 for direction in self.puzzle.directions:
                     if direction != previous:
                         simulated = puzzle.simulate(direction)
@@ -44,35 +44,35 @@ class PatternBuilder():
                             continue
                         if simulated[puzzle.position[0]][puzzle.position[1]] in self.group:
                             simulated.moves = puzzle.moves + 1
-                        open_list.append(
+                        self.open_list.append(
                             (simulated, [-direction[0], -direction[1]]))
 
         print(f"Group ({str(self.group)[1:-1]}) completed.")
-        return closed_list
+        return self.closed_list
 
-    def visit(self, puzzle: Puzzle, visited: set, closed_list: dict):
+    def visit(self, puzzle: Puzzle):
         """Check if this permutation of the Puzzle with the blank tile 
-        has already been visited. If not, set hash of the Puzzle without
+        has already been self.visited. If not, set hash of the Puzzle without
         the blank tile to the closed list, and give it the value how many
         times the Puzzle has been moved in this Puzzle.
 
         Args:
             puzzle (Puzzle): This is the permutation of the Puzzle.
-            visited (set): Visited Puzzles with the blank piece.
-            closed_list (dict): List of closed permutations.
+            self.visited (set): Visited Puzzles with the blank piece.
+            self.closed_list (dict): List of closed permutations.
 
         Returns:
-            bool: If the permutation has not been visited.
+            bool: If the permutation has not been self.visited.
         """
         hashed_blank_puzzle = puzzle.hash(self.blank_group)
-        if hashed_blank_puzzle in visited:
+        if hashed_blank_puzzle in self.visited:
             return False
 
-        visited.add(hashed_blank_puzzle)
+        self.visited.add(hashed_blank_puzzle)
 
         hashed_puzzle = puzzle.hash(self.group)
-        if hashed_puzzle not in closed_list or closed_list[hashed_puzzle] > puzzle.moves:
-            closed_list[hashed_puzzle] = puzzle.moves
+        if hashed_puzzle not in self.closed_list or self.closed_list[hashed_puzzle] > puzzle.moves:
+            self.closed_list[hashed_puzzle] = puzzle.moves
 
         return True
 

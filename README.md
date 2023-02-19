@@ -1,8 +1,8 @@
 # 15PuzzleSolver
 
-This project is a GUI application that is made with TKinter. The application allows users to play the 15 Puzzle game and display optimal moves to solve it. 
+This is a Python-based GUI application built with the TKinter library. It enables users to play the 15 Puzzle game and presents them with optimal moves to solve it.
 
-The implementation uses the Iterative Deepening A* -algorithm with an additive pattern database as a heuristic to find the optimal moves to solve the Puzzle. 
+To achieve this, the application employs the Iterative Deepening A* algorithm, which uses an additive pattern database as a heuristic to determine the best moves to solve the puzzle.
 
 ## Instructions
 
@@ -24,9 +24,9 @@ $ poetry run invoke test
 
 ## Hints
 
-You can modify the puzzles size by changing the code in [puzzle.py](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/logic/puzzle.py) -file, but you have to implement appropiate additive pattern database for it.
+To modify the size of the puzzle, adjust the code in [puzzle.py](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/logic/puzzle.py), but remember to implement an appropriate additive pattern database.
 
-The repository comes with a pre-built additive pattern database that has a grouping of (5, 5, 5), but if you want to customize the groupings, you can easily do so by modifying the code in [build.py](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/logic/builder.py) -file and rebuilding the database.
+The repository provides a pre-built additive pattern database with a grouping of (5, 5, 5), but you can customize the groupings by modifying the code in [build.py](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/logic/builder.py) -file and rebuilding the database.
 
 ## Documentation
 
