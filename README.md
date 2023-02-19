@@ -1,5 +1,7 @@
 # 15PuzzleSolver
 
+![CI Badge](https://github.com/isakpulkki/15puzzlesolver/workflows/CI/badge.svg) [![Codecov badge](https://codecov.io/gh/isakpulkki/15PuzzleSolver/branch/main/graph/badge.svg?token=QCJD3KYHM7)](https://codecov.io/gh/isakpulkki/15PuzzleSolver)
+
 This is a Python-based GUI application built with the TKinter library. It enables users to play the 15 Puzzle game and presents them with optimal moves to solve it.
 
 To achieve this, the application employs the Iterative Deepening A* algorithm, which uses an additive pattern database as a heuristic to determine the best moves to solve the puzzle.
@@ -26,7 +28,7 @@ $ poetry run invoke test
 
 To modify the size of the puzzle, adjust the code in [puzzle.py](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/logic/puzzle.py), but remember to implement an appropriate additive pattern database.
 
-The repository provides a pre-built additive pattern database with a grouping of (5, 5, 5), but you can customize the groupings by modifying the code in [build.py](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/logic/builder.py) -file and rebuilding the database.
+The repository provides a pre-built additive pattern database with a grouping of (5, 5, 5), but you can customize the groupings by modifying the code in [build.py](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/logic/builder.py) and rebuilding the database.
 
 ## Documentation
 
@@ -42,4 +44,4 @@ The repository provides a pre-built additive pattern database with a grouping of
 * [Week 4](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week4.md)
 * [Week 5](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week5.md)
 
-![CI Badge](https://github.com/isakpulkki/15puzzlesolver/workflows/CI/badge.svg) [![Codecov badge](https://codecov.io/gh/isakpulkki/15PuzzleSolver/branch/main/graph/badge.svg?token=QCJD3KYHM7)](https://codecov.io/gh/isakpulkki/15PuzzleSolver)
+
