@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import Button
-from static.style import BACKGROUND_COLOR, NORMAL_FONT, BIG_FONT, MOVES_FONT
+from static.style import BLACK, NORMAL, BOLD, ITALIC
 
 
 class Menu(tk.Frame):
@@ -8,7 +8,7 @@ class Menu(tk.Frame):
     A class that represents the menu bar in the GUI window of the 15-puzzle game solver.
     """
 
-    def __init__(self, width, height, master):
+    def __init__(self, width: int, height: int, master):
         """
         Initializes the Menu component of the GUI.
 
@@ -22,11 +22,11 @@ class Menu(tk.Frame):
         self.height = height
         self.master = master
         self.frame = tk.Frame(
-            master, bg=BACKGROUND_COLOR, bd=3, width=width, height=height)
-        self.width = width / 5
+            master, bg=BLACK, bd=3, width=width, height=height)
+        self.width = width / 3
         self.frame.grid()
 
-    def draw_button(self, col, name, com):
+    def draw_button(self, col: int, name: str, com):
         """
         Draws a button in the menu bar.
 
@@ -38,15 +38,15 @@ class Menu(tk.Frame):
         """
         frame = tk.Frame(
             self.frame,
-            bg=BACKGROUND_COLOR,
+            bg=BLACK,
             width=int(self.width),
             height=self.height)
         frame.grid(row=0, column=col, padx=1, pady=1)
         button = Button(self.frame, text=name,
-                        highlightbackground=BACKGROUND_COLOR, font=NORMAL_FONT, command=com)
+                        highlightbackground=BLACK, font=NORMAL, command=com)
         button.grid(column=col, row=0, rowspan=2)
 
-    def draw_moves(self, col):
+    def draw_moves(self, col: int):
         """
         Draws the moves count in the menu bar.
 
@@ -54,16 +54,16 @@ class Menu(tk.Frame):
             col (int): The column where the moves counter should be placed in the menu bar.
 
         """
-        frame = tk.Frame(self.frame, bg=BACKGROUND_COLOR,
+        frame = tk.Frame(self.frame, bg=BLACK,
                          width=self.width, height=self.height)
         frame.grid(row=0, column=col, padx=0, pady=0)
-        tk.Label(self.frame, text="Moves", font=BIG_FONT,
-                 bg=BACKGROUND_COLOR).grid(column=col, row=0)
+        tk.Label(self.frame, text="Moves", font=BOLD,
+                 bg=BLACK).grid(column=col, row=0)
         self.moves_label = tk.Label(self.frame, text="0",
-                                    font=MOVES_FONT, bg=BACKGROUND_COLOR)
+                                    font=ITALIC, bg=BLACK)
         self.moves_label.grid(column=col, row=1)
 
-    def update_moves(self, moves):
+    def update_moves(self, moves: int):
         """
         Updates the moves count displayed in the menu bar.
 
