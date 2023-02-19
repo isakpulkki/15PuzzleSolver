@@ -1,4 +1,4 @@
-# Week 3
+# Week 4
 
 * Pattern database builder implemented
 * IDA* algorithm almost implemented
