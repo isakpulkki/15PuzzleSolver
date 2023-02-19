@@ -24,9 +24,9 @@ $ poetry run invoke test
 
 ## Hints
 
-You can modify the puzzles size by changing the code in ['puzzle.py'](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/logic/puzzle.py) -file, but you have to implement appropiate additive pattern database for it.
+You can modify the puzzles size by changing the code in [puzzle.py](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/logic/puzzle.py) -file, but you have to implement appropiate additive pattern database for it.
 
-The repository comes with a pre-built additive pattern database that has a grouping of (5, 5, 5), but if you want to customize the groupings, you can easily do so by modifying the code in ['build.py'](hhttps://github.com/isakpulkki/15PuzzleSolver/blob/main/src/logic/builder.py) -file and rebuilding the database.
+The repository comes with a pre-built additive pattern database that has a grouping of (5, 5, 5), but if you want to customize the groupings, you can easily do so by modifying the code in [build.py](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/logic/builder.py) -file and rebuilding the database.
 
 ## Documentation
 
