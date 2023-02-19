@@ -5,7 +5,7 @@ from multiprocessing import Pool
 
 
 class PatternBuilder():
-    def __init__(self,  group):
+    def __init__(self,  group: dict):
         """Intializes the pattern database builder with Puzzle, sets it numbers without shuffling.
         Sets moves from the starting position to 0, and initializes a new group with the blank tile.
 
@@ -18,8 +18,6 @@ class PatternBuilder():
         self.group = group
         self.blank_group = group.copy()
         self.blank_group.add(0)
-        self.visited = set()
-        self.closed_list = {}
 
     def build_patterns(self):
         """The method starts with the solved Puzzle and applies BFS to all possible permutations of the Puzzle
@@ -31,12 +29,14 @@ class PatternBuilder():
         Returns:
             dict: This is the closed list with all of the permutations of the group.
         """
+        visited = set()
+        closed_list = {}
         open_list = deque()
         open_list.append((self.puzzle, [0, 0]))
 
         while open_list:
             puzzle, previous = open_list.popleft()
-            if self.visit(puzzle):
+            if self.visit(puzzle, visited, closed_list):
                 for direction in self.puzzle.directions:
                     if direction != previous:
                         simulated = puzzle.simulate(direction)
@@ -48,9 +48,9 @@ class PatternBuilder():
                             (simulated, [-direction[0], -direction[1]]))
 
         print(f"Group ({str(self.group)[1:-1]}) completed.")
-        return self.closed_list
+        return closed_list
 
-    def visit(self, puzzle):
+    def visit(self, puzzle: Puzzle, visited: set, closed_list: dict):
         """Check if this permutation of the Puzzle with the blank tile 
         has already been visited. If not, set hash of the Puzzle without
         the blank tile to the closed list, and give it the value how many
@@ -58,24 +58,26 @@ class PatternBuilder():
 
         Args:
             puzzle (Puzzle): This is the permutation of the Puzzle.
+            visited (set): Visited Puzzles with the blank piece.
+            closed_list (dict): List of closed permutations.
 
         Returns:
             bool: If the permutation has not been visited.
         """
         hashed_blank_puzzle = puzzle.hash(self.blank_group)
-        if hashed_blank_puzzle in self.visited:
+        if hashed_blank_puzzle in visited:
             return False
 
-        self.visited.add(hashed_blank_puzzle)
+        visited.add(hashed_blank_puzzle)
 
         hashed_puzzle = puzzle.hash(self.group)
-        if hashed_puzzle not in self.closed_list or self.closed_list[hashed_puzzle] > puzzle.moves:
-            self.closed_list[hashed_puzzle] = puzzle.moves
+        if hashed_puzzle not in closed_list or closed_list[hashed_puzzle] > puzzle.moves:
+            closed_list[hashed_puzzle] = puzzle.moves
 
         return True
 
 
-def main(): 
+def main():
     """This is the main function of the pattern builder. You can set different groupings if you want to. 
     The patterns are independent, so they can be assigned to their own processes. 
     This function also stores the pattern data to a file for later use.
