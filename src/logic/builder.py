@@ -1,7 +1,7 @@
-from src.logic.puzzle import Puzzle
 import pickle
 from collections import deque
 from multiprocessing import Pool
+from src.logic.puzzle import Puzzle
 
 
 class PatternBuilder():
@@ -23,11 +23,12 @@ class PatternBuilder():
         self.open_list = deque()
 
     def build_patterns(self):
-        """The method starts with the solved Puzzle and applies BFS to all possible permutations of the Puzzle
-        within the group. It uses a queue to store the current permutation and its previous direction.
-        The method checks if the permutation has been self.visited before, and if not, adds it to the self.visited set.
-        It then simulates the Puzzle to every direction and creates a new permutation only if the moved piece is
-        in the group. The move is added to the permutation only if the other moves belong to the same group.
+        """The method starts with the solved Puzzle and applies BFS to all possible permutations of
+        the Puzzle within the group. It uses a queue to store the current permutation & its previous
+        direction. The method checks if the permutation has been self.visited before, if not, adds
+        it to the self.visited set. It then simulates the Puzzle to every direction, creates a new
+        permutation only if the moved piece is in the group. The move is added to the permutation
+        only if the other moves belong to the same group.
 
         Returns:
             dict: This is the closed list with all of the permutations of the group.
@@ -51,7 +52,7 @@ class PatternBuilder():
         return self.closed_list
 
     def visit(self, puzzle: Puzzle):
-        """Check if this permutation of the Puzzle with the blank tile 
+        """Check if this permutation of the Puzzle with the blank tile
         has already been self.visited. If not, set hash of the Puzzle without
         the blank tile to the closed list, and give it the value how many
         times the Puzzle has been moved in this Puzzle.
@@ -78,9 +79,9 @@ class PatternBuilder():
 
 
 def main():
-    """This is the main function of the pattern builder. You can set different groupings if you want to. 
-    The patterns are independent, so they can be assigned to their own processes. 
-    This function also stores the pattern data to a file for later use.
+    """This is the main function of the pattern builder. You can set different groupings
+    if you want to. The patterns are independent, so they can be assigned to their own
+    processes. This function also stores the pattern data to a file for later use.
     """
     patterns = [PatternBuilder({1, 2, 3, 4, 7}), PatternBuilder({5, 6, 9, 10, 13}),
                 PatternBuilder({8, 11, 12, 14, 15})]
