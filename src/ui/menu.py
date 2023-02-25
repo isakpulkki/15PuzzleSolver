@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import Button
-from src.static.style import BLACK, NORMAL, BOLD, ITALIC, WHITE
+from static.style import BLACK, NORMAL, BOLD, ITALIC, WHITE
 
 
 class Menu(tk.Frame):
