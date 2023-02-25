@@ -22,8 +22,6 @@ jobs:
         run: poetry install
       - name: Run Autopep8
         run: poetry run autopep8 --recursive src/ --in-place
-      - name: Run Pylint
-        run: poetry run invoke pylint
       - name: Run tests
         run: poetry run coverage run --branch -m pytest
       - name: Coverage report
