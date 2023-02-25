@@ -1,11 +1,13 @@
 from copy import deepcopy
 from random import randrange
 
+
 class Puzzle:
     """Object representing the puzzle."""
 
-    def __init__(self, size = 4):
-        """Initializes a new puzzle using 2-dimensional array, setting their numbers and shuffling the numbers."""
+    def __init__(self, size=4):
+        """Initializes a new puzzle using 2-dimensional array, setting their numbers and shuffling
+        the numbers."""
         self.size = size
         self.board = [[0] * self.size for _ in range(self.size)]
         self.position = [self.size - 1, self.size - 1]
@@ -14,20 +16,9 @@ class Puzzle:
     def set_numbers(self):
         """Sets the numbers to the board, and leaves blank space at the end for the game.
         """
-        self.board = [[(x * self.size) + (y + 1) for y in range(self.size)] for x in range(self.size)]
+        self.board = [[(x * self.size) + (y + 1)
+                       for y in range(self.size)] for x in range(self.size)]
         self.board[self.position[0]][self.position[1]] = 0
-
-    def get_number(self, x: int, y: int):
-        """Get a number from a location in the board.
-
-        Args:
-            x (int): x-coordinate of the board
-            y (int): y-coordinate of the board
-
-        Returns:
-            int: the number from the location
-        """
-        return self.board[x][y]
 
     def move_number(self, direction: list):
         """Moves a number from some direction to the blank position.
@@ -38,7 +29,8 @@ class Puzzle:
         if direction in self.directions:
             new_position = [self.position[0] + direction[0],
                             self.position[1] + direction[1]]
-            if new_position[0] < 0 or new_position[1] < 0 or new_position[0] >= self.size or new_position[1] >= self.size:
+            if new_position[0] < 0 or new_position[1] < 0 or new_position[0] >= self.size or \
+                    new_position[1] >= self.size:
                 return False
             self.board[self.position[0]][self.position[1]
                                          ] = self.board[new_position[0]][new_position[1]]
@@ -94,7 +86,7 @@ class Puzzle:
 
         Returns:
             bool: True if solved.
-        """        
+        """
         for i in range(self.size):
             for j in range(self.size):
                 if self.board[i][j] not in [i * self.size + j + 1, 0]:
