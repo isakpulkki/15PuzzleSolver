@@ -17,9 +17,6 @@ class TestPuzzle(unittest.TestCase):
         self.assertEqual(self.puzzle.board[0][0], 1)
         self.assertEqual(self.puzzle.board[0][1], 2)
 
-    def test_getting_number(self):
-        self.assertEqual(self.puzzle.get_number(0, 0), 1)
-
     def test_moving_numbers_right(self):
         self.puzzle.move_number([0, -1])
         self.assertEqual(self.puzzle.board[3][3], 15)
@@ -40,6 +37,10 @@ class TestPuzzle(unittest.TestCase):
         test_board = self.puzzle.board[0][:]
         self.puzzle.shuffle_board(999)
         self.assertNotEqual(self.puzzle.board[0], test_board)
-    
+
     def test_has_been_solved(self):
         self.assertTrue(self.puzzle.is_solved())
+
+    def test_hash_function_returns_correct_hash(self):
+        group = {1, 2, 3, 4, 5, 6, 7, 8}
+        self.assertEqual(self.puzzle.hash(group), "0001020310111213")
