@@ -14,8 +14,8 @@ class IDAStar:
                 self.patterns = pickle.load(file)
                 if sum(len(group) for group in self.groups) != self.puzzle.size ** 2 - 1:
                     print(
-                        "Cannot perform IDA* to solve the Puzzle, because additive pattern database" +
-                        " does not match with this Puzzle.")
+                    "Cannot perform IDA* to solve the Puzzle, because additive pattern database" +
+                    " does not match with this Puzzle.")
                     self.groups = None
                 else:
                     print("To solve the Puzzle, IDA* algorithm will use the additive pattern" +

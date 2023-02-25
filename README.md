@@ -4,7 +4,7 @@
 
 This is a Python-based GUI application built with the TKinter library. It enables users to play the 15 Puzzle game and presents them with optimal moves to solve it.
 
-To achieve this, the application employs the Iterative Deepening A* algorithm, which uses an additive pattern database as a heuristic to determine the best moves to solve the puzzle.
+To achieve this, the application uses the Iterative Deepening A* algorithm, which uses an additive pattern database as a heuristic to determine the best moves to solve the puzzle.
 
 ## Instructions
 
@@ -22,6 +22,9 @@ $ poetry run invoke build
 
 # Run the tests
 $ poetry run invoke test
+
+# Run the code validators
+$ poetry run invoke pylint
 ```
 
 ## Hints
@@ -43,5 +46,6 @@ The repository provides a pre-built additive pattern database with a grouping of
 * [Week 3](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week3.md)
 * [Week 4](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week4.md)
 * [Week 5](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week5.md)
+* [Week 6](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week6.md)
 
 
