@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import Button
-from static.style import BLACK, NORMAL, BOLD, ITALIC
+from src.static.style import BLACK, NORMAL, BOLD, ITALIC, WHITE
 
 
 class Menu(tk.Frame):
@@ -58,9 +58,9 @@ class Menu(tk.Frame):
                          width=self.width, height=self.height)
         frame.grid(row=0, column=col, padx=0, pady=0)
         tk.Label(self.frame, text="Moves", font=BOLD,
-                 bg=BLACK).grid(column=col, row=0)
+                 bg=BLACK, fg=WHITE).grid(column=col, row=0)
         self.moves_label = tk.Label(self.frame, text="0",
-                                    font=ITALIC, bg=BLACK)
+                                    font=ITALIC, bg=BLACK, fg=WHITE)
         self.moves_label.grid(column=col, row=1)
 
     def update_moves(self, moves: int):
