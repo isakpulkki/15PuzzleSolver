@@ -1,9 +1,9 @@
 import tkinter as tk
-from ui.menu import Menu
-from ui.board import Board
-from logic.puzzle import Puzzle
-from logic.ida import IDAStar
-from static.style import WHITE, GREEN, BLACK
+from src.ui.menu import Menu
+from src.ui.board import Board
+from src.logic.puzzle import Puzzle
+from src.logic.ida import IDAStar
+from src.static.style import WHITE, GREEN, BLACK
 
 
 class Application(tk.Tk):
@@ -14,7 +14,7 @@ class Application(tk.Tk):
 
     def __init__(self):
         """
-        Initializes the Tkinter window, creates an instance of the Puzzle class, sets the puzzle numbers,
+        Initializes the Tkinter window, creates an instance of Puzzle class, sets puzzle numbers,
         shuffles the board, creates instances of the Menu and Board classes etc.
         """
         tk.Tk.__init__(self)
@@ -52,7 +52,8 @@ class Application(tk.Tk):
 
     def update_number(self, x: int, y: int):
         """
-        Attempts to move the number at the given positionition (x, y) in the puzzle and updates the number of moves.
+        Attempts to move the number at the given positionition (x, y)
+        in the puzzle and updates the number of moves.
         Args:
             x (int): x-coordinate of the number to be moved.
             y (int): y-coordinate of the number to be moved.
@@ -88,7 +89,7 @@ class Application(tk.Tk):
             color = GREEN
         for x in range(self.puzzle.size):
             for y in range(self.puzzle.size):
-                number = self.puzzle.get_number(x, y)
+                number = self.puzzle[x][y]
                 self.board.update_piece(x, y, number, color)
 
 

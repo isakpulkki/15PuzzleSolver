@@ -1,6 +1,6 @@
 import tkinter as tk
-from logic.puzzle import Puzzle
-from static.style import BLACK, ITALIC, GRAY
+from src.logic.puzzle import Puzzle
+from src.static.style import BLACK, ITALIC, GRAY
 
 
 class Board(tk.Frame):
@@ -19,17 +19,17 @@ class Board(tk.Frame):
             self.master, bg=BLACK, bd=3, width=width, height=width)
         self.board.grid()
         self.width = width
+        self.cells = []
 
     def init_board(self, puzzle: Puzzle):
         """Initialize the cells in the board.
         Args:
             puzzle (Puzzle): The puzzle object containing information about each piece."""
-        self.cells = []
         piece_width = self.width / puzzle.size
         for x in range(puzzle.size):
             row = []
             for y in range(puzzle.size):
-                number = puzzle.get_number(x, y)
+                number = puzzle[x][y]
                 if number == 0:
                     number = ""
                 background = GRAY if number else BLACK
