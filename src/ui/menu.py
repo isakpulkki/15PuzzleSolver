@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import Button
-from static.style import BLACK, NORMAL, BOLD, ITALIC, WHITE
+from src.static.style import BLACK, NORMAL, BOLD, ITALIC, WHITE
 
 
 class Menu(tk.Frame):
@@ -25,6 +25,7 @@ class Menu(tk.Frame):
             master, bg=BLACK, bd=3, width=width, height=height)
         self.width = width / 3
         self.frame.grid()
+        self.moves_label = None
 
     def draw_button(self, col: int, name: str, com):
         """
