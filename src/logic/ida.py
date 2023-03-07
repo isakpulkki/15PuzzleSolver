@@ -24,7 +24,6 @@ class IDAStar:
         except FileNotFoundError:
             self.status = "Missing 'patterns.dat' file, try to rebuild the pattern database"
             self.groups = None
-        self.count = 0
     
     def start(self):
         """Initializes algorithm's starting position and data structures if groups have been 
@@ -41,7 +40,6 @@ class IDAStar:
         while True:
             t = self.search(path, directions, 0, bound)
             if t is True:
-                print(f"Visited {self.count} nodes.")
                 return directions, round(time() - start, 2)
             bound = t
 
