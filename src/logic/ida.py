@@ -91,7 +91,6 @@ class IDAStar:
         Returns:
             bound: The moves needed to get into solved state from this Puzzle.
         """
-        self.count += 1
         bound = 0
         for i, group in enumerate(self.groups):
             hashed_puzzle = puzzle.hash(group)
