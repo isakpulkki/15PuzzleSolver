@@ -26,6 +26,7 @@ class Menu(tk.Frame):
         self.width = width / 3
         self.frame.grid()
         self.moves_label = None
+        self.buttons = []
 
     def draw_button(self, col: int, name: str, com):
         """
@@ -46,6 +47,7 @@ class Menu(tk.Frame):
         button = Button(self.frame, text=name,
                         highlightbackground=BLACK, font=NORMAL, command=com)
         button.grid(column=col, row=0, rowspan=2)
+        self.buttons.append(button)
 
     def draw_moves(self, col: int):
         """
@@ -73,3 +75,8 @@ class Menu(tk.Frame):
 
         """
         self.moves_label.configure(text=moves)
+
+    def switch_buttons(self):
+        for button in self.buttons:
+            button["state"] = "disabled" if button["state"] == "normal" else "normal"
+    

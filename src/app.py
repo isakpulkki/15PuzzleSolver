@@ -4,6 +4,7 @@ from src.ui.board import Board
 from src.logic.puzzle import Puzzle
 from src.logic.ida import IDAStar
 from src.static.style import WHITE, GREEN, BLACK
+from src.ui.info import Info
 
 
 class Application(tk.Tk):
@@ -18,6 +19,7 @@ class Application(tk.Tk):
         shuffles the board, creates instances of the Menu and Board classes etc.
         """
         tk.Tk.__init__(self)
+        print("Welcome to 15PuzzleSolver!")
         self.iconphoto(False, tk.PhotoImage(file='src/static/puzzle.png'))
         self.title('15PuzzleSolver')
         self.resizable(False, False)
@@ -29,13 +31,14 @@ class Application(tk.Tk):
         self.idastar = IDAStar(self.puzzle)
         self.width = 650
         self.menu = Menu(self.width, 40, self)
-        self.init_menu()
         self.board = Board(self.width, self)
         self.board.init_board(self.puzzle)
+        self.info = Info(self.width, self)
+        self.init_menu_and_info()
         self.moves = 0
         self.mainloop()
 
-    def init_menu(self):
+    def init_menu_and_info(self):
         """
         Draws the buttons and the moves label on the menu bar.
         """
@@ -43,6 +46,9 @@ class Application(tk.Tk):
             999), self.reset_moves(), self.update()])
         self.menu.draw_moves(2)
         self.menu.draw_button(3, "Solve", self.solve)
+        if not self.idastar.groups:
+            self.menu.switch_buttons()
+        self.info.set_text(self.idastar.status)
 
     def reset_moves(self):
         """
@@ -69,14 +75,18 @@ class Application(tk.Tk):
         Solves the current Puzzle with IDA* algorithm.
         """
         self.idastar.puzzle = self.puzzle
-        if directions := self.idastar.start():
+        directions, time = self.idastar.start()
+        if directions:
+            self.info.set_text(f"Found the path in {time} seconds".replace(".",","))
+            self.menu.switch_buttons()
             var = tk.IntVar(self)
             for direction in directions:
                 self.puzzle.move_number(direction)
                 self.moves += 1
                 self.update()
-                self.after(500, var.set, 1)
+                self.after(400, var.set, 1)
                 self.wait_variable(var)
+            self.menu.switch_buttons()
 
     def update(self):
         """
@@ -91,7 +101,6 @@ class Application(tk.Tk):
             for y in range(self.puzzle.size):
                 number = self.puzzle[x][y]
                 self.board.update_piece(x, y, number, color)
-
 
 if __name__ == "__main__":
     Application()
