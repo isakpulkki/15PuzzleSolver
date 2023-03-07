@@ -7,7 +7,7 @@ class TestPatternBuilder(unittest.TestCase):
         self.pattern_builder = PatternBuilder({1, 2, 3})
 
     def test_visit_initial_visited_set_is_empty(self):
-        visited_set = self.pattern_builder.visited
+        visited_set = self.pattern_builder.visited_list
         self.assertEqual(len(visited_set), 0)
 
     def test_build_patterns_closed_list_is_initially_empty(self):

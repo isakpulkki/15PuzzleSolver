@@ -20,7 +20,7 @@ class TestIDAStar(unittest.TestCase):
         self.ida_star.patterns = [patterns]
 
     def test_start_returns_correct_directions(self):
-        self.assertEqual(self.ida_star.start(), [[1, 0]])
+        self.assertEqual(self.ida_star.start()[0], [[1, 0]])
 
     def test_heuristic_function_returns_correct_bound(self):
         self.assertEqual(self.ida_star.heuristic(self.right), 5)

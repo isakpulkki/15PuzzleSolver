@@ -13,22 +13,22 @@ class IDAStar:
                 self.groups = pickle.load(file)
                 self.patterns = pickle.load(file)
                 if sum(len(group) for group in self.groups) != self.puzzle.size ** 2 - 1:
-                    print(
-                    "Cannot perform IDA* to solve the Puzzle, because additive pattern database" +
-                    " does not match with this Puzzle.")
+                    self.status = (
+                    "Cannot solve the Puzzle, because additive pattern database" +
+                    " does not match with this Puzzle")
                     self.groups = None
                 else:
-                    print("To solve the Puzzle, IDA* algorithm will use the additive pattern" +
+                    self.status = ("The algorithm uses the additive pattern" +
                           " database for heuristics, with the groupings of " +
-                          f"({', '.join(str(len(group)) for group in self.groups)}).")
+                          f"({', '.join(str(len(group)) for group in self.groups)})")
         except FileNotFoundError:
-            print("No 'patterns.dat' found, try to rebuild the pattern database.")
+            self.status = "Missing 'patterns.dat' file, try to rebuild the pattern database"
             self.groups = None
-
+        self.count = 0
+    
     def start(self):
-        """If the groups have been assigned, initializes the starting position of the algorithm,
-        and the required data structures. Then, until the Puzzle is solved, the algorithm will
-        iterate with the new bound values found.
+        """Initializes algorithm's starting position and data structures if groups have been 
+        assigned. Then iterates with new bound values until Puzzle is solved.
 
         Returns:
             list: List of directions to solve the Puzzle.
@@ -41,24 +41,19 @@ class IDAStar:
         while True:
             t = self.search(path, directions, 0, bound)
             if t is True:
-                print(
-                    f"The algorithm found the path in {round(time() - start, 2)} seconds.")
-                return directions
+                print(f"Visited {self.count} nodes.")
+                return directions, round(time() - start, 2)
             bound = t
 
     def search(self, path: list, directions: list, g: int, bound: int):
-        """Recursively finds the optimal path to the goal state using IDA* (Iterative Deepening A*)
-        algorithm. The algorithm takes the last puzzle in the path and calculates its 'f' value
-        (moves + heuristic).
-        If this value exceeds the given bound, the algorithm backtracks and returns the minimum
-        possible bound from this path.
-        If all the directions exceed the bound, the bound is updated and the search is repeated
-        with the new bound. If the goal state is reached, the recursion terminates and returns True.
+        """Uses IDA* to recursively find the optimal path to the goal state. Calculates 'f' 
+        value for the last puzzle in the path. Backtracks if 'f' value exceeds the given 
+        bound. Updates the bound if all directions exceed it. Terminates recursion and 
+        returns True when goal state is reached.
 
         Args:
         path (list): A list of Puzzles representing the current path.
-        directions (list): A list of directions taken to reach the current state
-        from the previous states.
+        directions (list): A list of directions taken to reach the current state.
         g (int): The moves used to reach the current state from the initial state.
         bound (int): The maximum value of moves to reach the goal state.
 
@@ -98,6 +93,7 @@ class IDAStar:
         Returns:
             bound: The moves needed to get into solved state from this Puzzle.
         """
+        self.count += 1
         bound = 0
         for i, group in enumerate(self.groups):
             hashed_puzzle = puzzle.hash(group)
