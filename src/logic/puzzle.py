@@ -5,13 +5,14 @@ from random import randrange
 class Puzzle:
     """Object representing the puzzle."""
 
-    def __init__(self, size=4):
+    def __init__(self, size):
         """Initializes a new puzzle using 2-dimensional array, setting their numbers and shuffling
         the numbers."""
         self.size = size
         self.board = [[0] * self.size for _ in range(self.size)]
         self.position = [self.size - 1, self.size - 1]
         self.directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+        self.moves = 0
 
     def set_numbers(self):
         """Sets the numbers to the board, and leaves blank space at the end for the game.
@@ -26,16 +27,11 @@ class Puzzle:
         Args:
             direction (list): x and y coordinates to move to
         """
-        if direction in self.directions:
-            new_position = [self.position[0] + direction[0],
-                            self.position[1] + direction[1]]
-            if new_position[0] < 0 or new_position[1] < 0 or new_position[0] >= self.size or \
-                    new_position[1] >= self.size:
-                return False
-            self.board[self.position[0]][self.position[1]
-                                         ] = self.board[new_position[0]][new_position[1]]
-            self.board[new_position[0]][new_position[1]] = 0
-            self.position = new_position
+        new_x, new_y = self.position[0] + direction[0], self.position[1] + direction[1]
+        if 0 <= new_x < self.size and 0 <= new_y < self.size:
+            self.board[self.position[0]][self.position[1]] = self.board[new_x][new_y]
+            self.board[new_x][new_y] = 0
+            self.position = [new_x, new_y]
             return True
         return False
 
@@ -78,8 +74,12 @@ class Puzzle:
         Returns:
             Puzzle: The copied Puzzle with move made.
         """
-        puzzle_copy = deepcopy(self)
-        return puzzle_copy if puzzle_copy.move_number(direction) else False
+        new_x, new_y = self.position[0] + direction[0], self.position[1] + direction[1]
+        if 0 <= new_x < self.size and 0 <= new_y < self.size:
+            puzzle_copy = deepcopy(self)
+            puzzle_copy.move_number(direction)
+            return puzzle_copy
+        return False
 
     def is_solved(self):
         """Checks if the Puzzle has been solved.
