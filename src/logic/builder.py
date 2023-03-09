@@ -2,24 +2,24 @@ import pickle
 from collections import deque
 from multiprocessing import Pool
 from src.logic.puzzle import Puzzle
+import time
+
 
 class PatternBuilder():
-    def __init__(self,  group: dict):
+    def __init__(self,  group: dict, size: int):
         """Intializes the pattern database builder with Puzzle, sets it numbers without shuffling.
         Sets moves from the starting position to 0, and initializes a new group with the blank tile.
 
         Args:
             group (dict): the group of numbers of the Puzzle included in this pattern.
         """
-        self.puzzle = Puzzle()
+        self.puzzle = Puzzle(size)
         self.puzzle.set_numbers()
         self.puzzle.moves = 0
         self.group = group
         self.blank_group = group.copy()
         self.blank_group.add(0)
-        self.visited_list = set()
-        self.closed_list = {}
-        self.open_list = deque()
+        self.iterations = 0
 
     def build_patterns(self):
         """Applies BFS to all permutations of the Puzzle within the group, starting from 
@@ -30,11 +30,16 @@ class PatternBuilder():
         Returns:
             dict: This is the closed list with all of the permutations of the group.
         """
-        self.open_list.append((self.puzzle, [0, 0]))
 
-        while self.open_list:
-            puzzle, previous = self.open_list.popleft()
-            if self.visit(puzzle):
+        visited_list = set()
+        closed_list = {}
+        open_list = deque()
+        open_list.append((self.puzzle, None))
+        start = time.time()
+
+        while open_list:
+            puzzle, previous = open_list.popleft()
+            if self.visit(puzzle, visited_list, closed_list,):
                 for direction in self.puzzle.directions:
                     if direction != previous:
                         simulated = puzzle.simulate(direction)
@@ -42,28 +47,34 @@ class PatternBuilder():
                             continue
                         if simulated[puzzle.position[0]][puzzle.position[1]] in self.group:
                             simulated.moves = puzzle.moves + 1
-                        self.open_list.append(
+                        open_list.append(
                             (simulated, [-direction[0], -direction[1]]))
+                        end = time.time()
+                if end - start > 10:
+                    print(f"Iterations: {self.iterations}")
+                    print(f"Open list: {len(open_list)}")
+                    start = end
+                self.iterations += 1
 
         print(f"Group ({str(self.group)[1:-1]}) completed.")
-        return self.closed_list
+        return closed_list
 
-    def visit(self, puzzle: Puzzle):
+    def visit(self, puzzle: Puzzle, visited_list, closed_list):
         """Checks if permutation with the blank tile has been visited. 
         If not, adds Puzzle without blank tile to closed list with the number of moves made.
 
         Returns:
-            bool: If the permutation has not been self.visited_list.
+            bool: If the permutation has not been visited_list.
         """
         hashed_blank_puzzle = puzzle.hash(self.blank_group)
-        if hashed_blank_puzzle in self.visited_list:
+        if hashed_blank_puzzle in visited_list:
             return False
 
-        self.visited_list.add(hashed_blank_puzzle)
+        visited_list.add(hashed_blank_puzzle)
 
         hashed_puzzle = puzzle.hash(self.group)
-        if hashed_puzzle not in self.closed_list or self.closed_list[hashed_puzzle] > puzzle.moves:
-            self.closed_list[hashed_puzzle] = puzzle.moves
+        if hashed_puzzle not in closed_list or closed_list[hashed_puzzle] > puzzle.moves:
+            closed_list[hashed_puzzle] = puzzle.moves
 
         return True
 
@@ -72,8 +83,9 @@ def main():
     if you want to. The patterns are independent, so they can be assigned to their own
     processes. This function also stores the pattern data to a file for later use.
     """
-    patterns = [PatternBuilder({1, 2, 3, 4, 7}), PatternBuilder({5, 6, 9, 10, 13}),
-                PatternBuilder({8, 11, 12, 14, 15})]
+    size = 4
+    patterns = [PatternBuilder({1,5,6,9,10,13}, size), PatternBuilder({7,8,11,12,14,15}, size),
+                PatternBuilder({2,3,4}, size)]
     closed_list = []
 
     print("Generating patterns, this could take a while...")
