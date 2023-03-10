@@ -12,8 +12,8 @@ The worst-case scenario for time complexities of the additive pattern databases 
 
 ## Sources
 
+* [Additive pattern database heuristics](https://www.semanticscholar.org/paper/Additive-Pattern-Database-Heuristics-Felner-Korf/639eb0e6110ba09eb16bd6c958064ac6fa08b440)
 * [Iterative deepening A*](https://en.wikipedia.org/wiki/Iterative_deepening_A*)
 * [Manhattan distance](https://iq.opengenus.org/manhattan-distance/)
-* [Pattern databases](https://link.springer.com/chapter/10.1007/978-3-319-05428-5_2)
 
 
