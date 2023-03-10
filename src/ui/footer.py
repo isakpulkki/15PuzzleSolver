@@ -2,7 +2,7 @@ import tkinter as tk
 from src.static.style import BLACK, WHITE, SMALL
 
 
-class Info(tk.Frame):
+class Footer(tk.Frame):
     """
     A class that represents the Info bar in the bottom of the GUI window.
     """
@@ -21,8 +21,9 @@ class Info(tk.Frame):
         self.frame = tk.Frame(
             master, bg=BLACK, bd=3, width=width)
         self.frame.grid()
-        self.label = tk.Label(self.frame, text="", font=SMALL, bg=BLACK, fg=WHITE)
+        self.label = tk.Label(self.frame, text="",
+                              font=SMALL, bg=BLACK, fg=WHITE)
         self.label.grid()
-        
+
     def set_text(self, x):
         self.label.configure(text=x)
