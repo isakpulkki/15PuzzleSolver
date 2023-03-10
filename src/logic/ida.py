@@ -4,27 +4,23 @@ from src.logic.puzzle import Puzzle
 
 
 class IDAStar:
-    def __init__(self, puzzle):
+    def __init__(self, puzzle: Puzzle):
         """Intializes the IDA* algorithm heuristics, from the file with patterns & their weights.
         """
         self.puzzle = puzzle
         try:
             with open("patterns.dat", "rb") as file:
-                self.groups = pickle.load(file)
-                self.patterns = pickle.load(file)
-                if sum(len(group) for group in self.groups) != self.puzzle.size ** 2 - 1:
-                    self.status = (
-                    "Cannot solve the Puzzle, because additive pattern database" +
-                    " does not match with this Puzzle")
-                    self.groups = None
+                self.groups, self.patterns = pickle.load(
+                    file), pickle.load(file)
+                if sum(len(g) for g in self.groups) != self.puzzle.size ** 2 - 1:
+                    self.status, self.groups = "Cannot solve due to pattern database mismatch", None
                 else:
-                    self.status = ("The algorithm uses the additive pattern" +
-                          " database for heuristics, with the groupings of " +
-                          f"({', '.join(str(len(group)) for group in self.groups)})")
+                    self.status = "Using pattern database for heuristics with groupings of "\
+                        + f"({', '.join(str(len(g)) for g in self.groups)})"
         except FileNotFoundError:
-            self.status = "Missing 'patterns.dat' file, try to rebuild the pattern database"
-            self.groups = None
-    
+            self.status, self.groups = "Missing 'patterns.dat' file, rebuild the pattern database",\
+                None
+
     def start(self):
         """Initializes algorithm's starting position and data structures if groups have been 
         assigned. Then iterates with new bound values until Puzzle is solved.
@@ -44,32 +40,27 @@ class IDAStar:
             bound = t
 
     def search(self, path: list, directions: list, g: int, bound: int):
-        """Uses IDA* to recursively find the optimal path to the goal state. Calculates 'f' 
-        value for the last puzzle in the path. Backtracks if 'f' value exceeds the given 
-        bound. Updates the bound if all directions exceed it. Terminates recursion and 
-        returns True when goal state is reached.
+        """This function uses IDA* to find the optimal path to the goal state. It calculates 'f' 
+        for the last puzzle in the path, backtracks if 'f' exceeds the bound, and updates the bound
+        if all directions exceed it. It returns True when the goal state is reached or the minimum 
+        bound for the path otherwise. 
 
-        Args:
-        path (list): A list of Puzzles representing the current path.
-        directions (list): A list of directions taken to reach the current state.
-        g (int): The moves used to reach the current state from the initial state.
-        bound (int): The maximum value of moves to reach the goal state.
+        Args: path (a list of Puzzles), directions (a list of directions), 
+        g (the moves used to reach the current state), and bound (the max moves to reach the goal).
 
-    Returns:
-        bool: If the goal state is reached, returns True.
-        min_bound: Otherwise, returns the minimum possible bound for the path.
+        Returns: True if goal reached, otherwise the minimum bound for the path.
     """
-        puzzle: Puzzle = path[-1]
-        f = g + self.heuristic(puzzle)
+        current: Puzzle = path[-1]
+        f = g + self.heuristic(current)
         if f > bound:
             return f
-        if puzzle.is_solved():
+        if current.is_solved():
             return True
         min_bound = float('inf')
-        for direction in puzzle.directions:
+        for direction in current.directions:
             if directions and [-direction[0], -direction[1]] == directions[-1]:
                 continue
-            simulated = puzzle.simulate(direction)
+            simulated = current.simulate(direction)
             if not simulated or simulated in path:
                 continue
             path.append(simulated)
@@ -82,7 +73,7 @@ class IDAStar:
             directions.pop()
         return min_bound
 
-    def heuristic(self, puzzle: Puzzle):
+    def heuristic(self, current: Puzzle):
         """Calculates the total bound for the given Puzzle, sum of the groups bound values.
 
         Args:
@@ -93,6 +84,6 @@ class IDAStar:
         """
         bound = 0
         for i, group in enumerate(self.groups):
-            hashed_puzzle = puzzle.hash(group)
+            hashed_puzzle = current.hash(group)
             bound += self.patterns[i][hashed_puzzle]
         return bound
