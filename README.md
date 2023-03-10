@@ -27,9 +27,6 @@ $ poetry run invoke test
 
 # Run the code validators
 $ poetry run invoke pylint
-
-# Build a new pattern database
-$ poetry run invoke build
 ```
 
 
