@@ -22,7 +22,7 @@ class IDAStar:
                 None
 
     def start(self):
-        """Initializes algorithm's starting position and data structures if groups have been 
+        """Initializes algorithm's starting position and data structures if groups have been
         assigned. Then iterates with new bound values until Puzzle is solved.
 
         Returns:
@@ -40,12 +40,12 @@ class IDAStar:
             bound = t
 
     def search(self, path: list, directions: list, g: int, bound: int):
-        """This function uses IDA* to find the optimal path to the goal state. It calculates 'f' 
+        """This function uses IDA* to find the optimal path to the goal state. It calculates 'f'
         for the last puzzle in the path, backtracks if 'f' exceeds the bound, and updates the bound
-        if all directions exceed it. It returns True when the goal state is reached or the minimum 
-        bound for the path otherwise. 
+        if all directions exceed it. It returns True when the goal state is reached or the minimum
+        bound for the path otherwise.
 
-        Args: path (a list of Puzzles), directions (a list of directions), 
+        Args: path (a list of Puzzles), directions (a list of directions),
         g (the moves used to reach the current state), and bound (the max moves to reach the goal).
 
         Returns: True if goal reached, otherwise the minimum bound for the path.

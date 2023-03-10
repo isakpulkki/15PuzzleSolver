@@ -24,9 +24,9 @@ class PatternBuilder():
         self.iterations = 0
 
     def build_patterns(self):
-        """Applies BFS to all permutations of the Puzzle within the group, starting from 
-        the solved state. Uses a queue to store each permutation and its previous direction. 
-        Checks for previously visited permutations and adds new ones only if the moved piece 
+        """Applies BFS to all permutations of the Puzzle within the group, starting from
+        the solved state. Uses a queue to store each permutation and its previous direction.
+        Checks for previously visited permutations and adds new ones only if the moved piece
         is in the group and the other moves are in the same group.
 
         Returns:
@@ -53,7 +53,7 @@ class PatternBuilder():
         return self.closed_list
 
     def visit(self, puzzle: Puzzle):
-        """Checks if permutation with the blank tile has been visited. 
+        """Checks if permutation with the blank tile has been visited.
         If not, adds Puzzle without blank tile to closed list with the number of moves made.
 
         Returns:
