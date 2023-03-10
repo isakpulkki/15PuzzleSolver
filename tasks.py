@@ -3,10 +3,10 @@ from invoke import task
 @task
 def start(ctx):
     ctx.run("python3 src/app.py", pty=True)
-    
+
 @task
 def test(ctx):
-    ctx.run("pytest src/tests", pty=True)
+    ctx.run("pytest src/tests -s", pty=True)
 
 @task
 def build(ctx):
