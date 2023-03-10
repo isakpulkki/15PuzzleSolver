@@ -77,6 +77,7 @@ class Menu(tk.Frame):
         self.moves_label.configure(text=moves)
 
     def switch_buttons(self):
+        """Disables or enables the buttons.
+        """
         for button in self.buttons:
             button["state"] = "disabled" if button["state"] == "normal" else "normal"
-    
