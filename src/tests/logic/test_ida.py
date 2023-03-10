@@ -26,3 +26,15 @@ class TestIDAStar(unittest.TestCase):
         self.assertEqual(self.ida_star.heuristic(self.right), 5)
         self.assertEqual(self.ida_star.heuristic(self.up), 10)
         self.assertEqual(self.ida_star.heuristic(self.left), 13)
+
+    def test_with_puzzle_with_52_moves_if_15_puzzle_database(self):
+        puzzle = Puzzle(size=4)
+        puzzle.board = [[15, 14, 1, 6], [9, 11, 4, 12],
+                        [0, 10, 7, 3], [13, 8, 5, 2]]
+        puzzle.position = [2, 0]
+        ida_star = IDAStar(puzzle)
+        if not ida_star.groups:
+            return True
+        results = ida_star.start()
+        print(f"Puzzle solved in {results[1]} seconds".replace(".", ",") + ".")
+        self.assertEqual(len(results[0]), 52)
