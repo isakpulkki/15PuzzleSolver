@@ -3,7 +3,7 @@ from random import randrange
 
 
 class Puzzle:
-    """Object representing the puzzle."""
+    """Object representing the Puzzle."""
 
     def __init__(self, size):
         """Initializes a new puzzle using 2-dimensional array, setting their numbers and shuffling
@@ -27,9 +27,11 @@ class Puzzle:
         Args:
             direction (list): x and y coordinates to move to
         """
-        new_x, new_y = self.position[0] + direction[0], self.position[1] + direction[1]
+        new_x, new_y = self.position[0] + \
+            direction[0], self.position[1] + direction[1]
         if 0 <= new_x < self.size and 0 <= new_y < self.size:
-            self.board[self.position[0]][self.position[1]] = self.board[new_x][new_y]
+            self.board[self.position[0]][self.position[1]
+                                         ] = self.board[new_x][new_y]
             self.board[new_x][new_y] = 0
             self.position = [new_x, new_y]
             return True
@@ -61,7 +63,6 @@ class Puzzle:
                 if self[i][j] in group:
                     puzzle_hash[2*self[i][j]] = str(i)
                     puzzle_hash[2*self[i][j]+1] = str(j)
-
         return "".join(puzzle_hash)
 
     def simulate(self, direction: list):
@@ -74,12 +75,9 @@ class Puzzle:
         Returns:
             Puzzle: The copied Puzzle with move made.
         """
-        new_x, new_y = self.position[0] + direction[0], self.position[1] + direction[1]
-        if 0 <= new_x < self.size and 0 <= new_y < self.size:
-            puzzle_copy = deepcopy(self)
-            puzzle_copy.move_number(direction)
-            return puzzle_copy
-        return False
+
+        puzzle_copy = deepcopy(self)
+        return puzzle_copy if puzzle_copy.move_number(direction) else False
 
     def is_solved(self):
         """Checks if the Puzzle has been solved.
