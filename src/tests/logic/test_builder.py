@@ -3,8 +3,9 @@ from src.logic.builder import PatternBuilder
 
 
 class TestPatternBuilder(unittest.TestCase):
+
     def setUp(self):
-        self.pattern_builder = PatternBuilder({1, 2, 3})
+        self.pattern_builder = PatternBuilder({1, 2, 3}, 4)
 
     def test_visit_initial_visited_set_is_empty(self):
         visited_set = self.pattern_builder.visited_list
@@ -23,7 +24,7 @@ class TestPatternBuilder(unittest.TestCase):
         result = self.pattern_builder.visit(self.pattern_builder.puzzle)
         self.assertEqual(result, False)
 
-    def test_building_patterns_returns_correct_length_list(self):
+    def test_builder_returns_correct_length_list_and_iterations(self):
         result = self.pattern_builder.build_patterns()
-        print(result)
         self.assertEqual(len(result), 3360)
+        self.assertEqual(self.pattern_builder.iterations, 43680)
