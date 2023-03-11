@@ -33,7 +33,7 @@ The time complexity for building the database should be O(P(n, k)), which is k-p
 
 We can see that the results we got testing the program with different groupings, alternating the parameters in [test_builder.py](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/tests/logic/test_builder.py), match the time complexity of O(P(n, k)):
 
-| **Puzzle size** | **Group size** | **Amount of Permutations**  |  **Database size** |
+| **Puzzle size** | **Group size** | **Permutations**  |  **Database size** |
 | --- | --- | --- | --- |
 |3<sup>2</sup>| 2 | 504 | 72 |
 |3<sup>2</sup>| 3 | 3024 | 504 |
@@ -54,16 +54,20 @@ The following test cases are for the IDAStar algorithm, which is in charge of re
 
 Testing the time complexity of this algorithm is not trivial, since this algorithm relies on the heuristic evalution function for its time complexity, that the heuristic function is admissible. 
 
-In the absolute worst-case scenario, the time complexity would be O(b<sup>d</sup>). The heuristic function would be unadmissable, and the program would become unusable. Some examples of the running times:
+In the absolute worst-case scenario, the time complexity would be O(b<sup>d</sup>). The heuristic function would be unadmissable, and the program would become unusable. 
 
-| Groupings | Depth | Time |
+The algorithm is tested that it can find the shortest-path for the vast majority of the Puzzles in seconds, some examples of the running times:
+
+| **Groupings** | **Depth** | **Time** |
 | --- | --- | --- |
 | (5, 5, 5) | 47 | 0,32 seconds |
 | (5, 5, 5) | 49 | 0,21 seconds |
 | (5, 5, 5) | 51 | 0,47 seconds |
+| (6, 6, 3) | 53 | 1,21 seconds |
 | (5, 5, 5) | 57 | 15,21 seconds |
+| (6, 6, 3) | 59 | 3,21 seconds |
 
-The algorithm performs quite well with pattern database with groupings of (5, 5, 5) for most of the easier Puzzles, where the (d < 60). For the harder Puzzles, the algorithm would benefit from having a better heuristic function, in this case a pattern database with groupings of (6, 6, 3) or (7, 8), which is being implemented when device with enough memory is accessed.
+The algorithm performs quite well with pattern database with groupings of (5, 5, 5) for most of the easier Puzzles. For the harder Puzzles, the algorithm benefits from having a pattern database with groupings of (6, 6, 3). To solve the hardest Puzzles with up to 80 moves in optimal time, a pattern database of (7, 8) would be needed.
 
 
 
