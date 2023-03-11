@@ -1,6 +1,6 @@
 # Specification Document
 
-The goal of this project is to create a GUI program that allows the user to play the 15 Puzzle game using mouse input and possibility to shuffle the board. Additionally, the program will provide a button to display the optimal moves required to solve the Puzzle with Iterative Deepening A* algorithm using pattern database as heuristics.
+The goal of this project is to create a GUI program that allows the user to play the 15 Puzzle game. Additionally, the program can display the optimal moves required to solve the Puzzle with Iterative Deepening A* algorithm using additive pattern database as heuristics.
 
 I am also capable of programming in Java and can also do the peer reviews for those projects. I am a student for  bachelor’s in computer science. Documentation is done using Markdown.
 
