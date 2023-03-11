@@ -8,7 +8,7 @@ To achieve this, the application uses the Iterative Deepening A* algorithm, whic
 
 ## Instructions
 
-To run this application, you must have Python3 and Poetry installed. Get the source code from [here](https://github.com/isakpulkki/15PuzzleSolver/releases/tag/1.0), or clone the repository to your preferred location (note that Git Large File Storage extension is needed). 
+To run this application, you must have Python3 and Poetry installed. Clone the repository to your preferred location (note that Git Large File Storage extension is needed). 
 
 ```bash
 # Install dependencies
