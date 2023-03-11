@@ -25,40 +25,32 @@ class Board(tk.Frame):
         """Initialize the cells in the board.
         Args:
             puzzle (Puzzle): The puzzle object containing information about each piece."""
-        piece_width = self.width / puzzle.size
+        size = self.width / puzzle.size
         for x in range(puzzle.size):
             row = []
             for y in range(puzzle.size):
-                number = puzzle[x][y]
-                if number == 0:
-                    number = ""
-                background = GRAY if number else BLACK
-                frame = tk.Frame(self.board, bg=background,
-                                 width=piece_width, height=piece_width)
-                frame.grid(row=x, column=y, padx=1, pady=1)
-                frame.bind("<ButtonRelease-1>", self.on_click)
-                cell_number = tk.Label(self.board,
-                                       text=number, bg=background, font=ITALIC)
-                cell_number.grid(row=x, column=y)
-                cell_number.bind("<ButtonRelease-1>", self.on_click)
-                cell_data = {"frame": frame, "number": cell_number}
-                row.append(cell_data)
+                num = puzzle[x][y] or ""
+                bg = GRAY if num else BLACK
+                frm = tk.Frame(self.board, bg=bg, width=size, height=size)
+                frm.grid(row=x, column=y, padx=1, pady=1)
+                frm.bind("<ButtonRelease-1>", self.on_click)
+                cell_num = tk.Label(self.board, text=num, bg=bg, font=ITALIC)
+                cell_num.grid(row=x, column=y)
+                cell_num.bind("<ButtonRelease-1>", self.on_click)
+                row.append({"frame": frm, "number": cell_num})
             self.cells.append(row)
 
     def update_piece(self, x: int, y: int, number: int, color: str):
         """Update the background color and number of a cell.
-        Args:
-            x (int): X-coordinate of the cell to update.
-            y (int): Y-coordinate of the cell to update.
-            number (int): The new number to set for the cell.
+        Args: 
+            x (int): X-coordinate of the cell, y (int): Y-coordinate of the cell.
+            number (int): The new number to set for the cell,
             color (str): The wanted color of the number.
         """
-        if number == 0:
-            number = ""
         background = GRAY if number else BLACK
-        self.cells[x][y]["frame"].configure(bg=background)
-        self.cells[x][y]["number"].configure(
-            bg=background, text=number, fg=color)
+        self.cells[x][y]["frame"].config(bg=background)
+        self.cells[x][y]["number"].config(bg=background, text=number or "", fg=color)
+
 
     def on_click(self, event):
         """Handle a click event on a cell.
