@@ -8,7 +8,7 @@ To achieve this, the application uses the Iterative Deepening A* algorithm, whic
 
 ## Instructions
 
-To run this application, you must have Python3 and Poetry installed. Clone the repository to your preferred location (note that Git Large File Storage extension is needed). 
+To run this application, you must have Python3 and Poetry installed. Clone the repository to your preferred location (note that [Git Large File Storage](https://git-lfs.com) extension is needed). 
 
 ```bash
 # Install dependencies
