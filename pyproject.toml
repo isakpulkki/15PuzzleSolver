@@ -2,7 +2,7 @@
 name = "src"
 version = "0.1.0"
 description = ""
-authors = ["isakpulkki <isak@pulkki.me>"]
+authors = ["isakpulkki"]
 readme = "README.md"
 
 
