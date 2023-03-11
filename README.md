@@ -27,7 +27,7 @@ $ poetry run invoke test
 $ poetry run invoke pylint
 ```
 
-The repository provides a pre-built additive pattern database with groupings of (6, 6, 3), but you can customize the database by modifying the code in [build.py](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/logic/builder.py), and rebuilding the database.
+The repository provides a pre-built additive pattern database with groupings of (6, 6, 3). You can customize the database by modifying the code in [build.py](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/logic/builder.py), and rebuilding the database.
 
 ## Documentation
 
