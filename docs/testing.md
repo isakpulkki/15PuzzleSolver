@@ -29,7 +29,7 @@ The following test cases are for the PatternBuilder class, which is in charge of
 
 #### Testing the Time Complexities of the PatternBuilder
 
-The time complexity for building the database should be O(P(n, k)), which is k-permutations of 'n'. So, for example of 15-puzzle, 'n' will be the size of the Puzzle, which is 4<sup>2</sup> = 16, and 'k' is the largest group we are calculating heuristics for. In this example, let's use grouping of (5, 5, 5), so our 'k' will be (5 + 1) = 6, since we would visit all the permutations with the blank tile, so we iterate over P(16, 6) permutations per group. The size of the database will be P(16, 5) per group, since we do not need to count the blank space in those.
+The time complexity for building the database should be O(P(n, k)), which is *k*-permutations of *n*. So, for example of 15-Puzzle, *n* will be the size of the Puzzle, which is 4<sup>2</sup> = 16, and *k* is the largest group we are calculating heuristics for. In this example, let's use grouping of (5, 5, 5), so our *k* will be (5 + 1) = 6, since we would visit all the permutations with the blank tile, so we iterate over P(16, 6) permutations per group. The size of the database will be P(16, 5) per group, since we do not need to count the blank space in those.
 
 We can see that the results we got testing the program with different groupings, alternating the parameters in [test_builder.py](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/tests/logic/test_builder.py), match the time complexity of O(P(n, k)):
 
