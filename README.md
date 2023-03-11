@@ -8,9 +8,7 @@ To achieve this, the application uses the Iterative Deepening A* algorithm, whic
 
 ## Instructions
 
-To run this application, you must have Python3 and Poetry installed. Clone the repository to your preferred location. 
-
-The repository provides a pre-built additive pattern database with a groupings of (6, 6, 3), but you can customize the groupings by modifying the code in [build.py](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/logic/builder.py), and rebuilding the database. Notice that the building can take a lot of time.
+To run this application, you must have Python3 and Poetry installed. Clone the repository to your preferred location, note that Git Large File Storage extension is needed. 
 
 ```bash
 # Install dependencies
@@ -28,6 +26,8 @@ $ poetry run invoke test
 # Run the code validators
 $ poetry run invoke pylint
 ```
+
+The repository provides a pre-built additive pattern database with a groupings of (6, 6, 3), but you can customize the groupings by modifying the code in [build.py](https://github.com/isakpulkki/15PuzzleSolver/blob/main/src/logic/builder.py), and rebuilding the database.
 
 ## Documentation
 
