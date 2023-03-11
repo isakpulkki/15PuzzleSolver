@@ -11,11 +11,10 @@ class Menu(tk.Frame):
     def __init__(self, width: int, height: int, master):
         """
         Initializes the Menu component of the GUI.
-
         Args:
-        width (int): The width of the menu bar.
-        height (int): The height of the menu bar.
-        master (Tk): The parent window of the menu bar.
+            width (int): The width of the menu bar.
+            height (int): The height of the menu bar.
+            master (Tk): The parent window of the menu bar.
 
     """
         tk.Frame.__init__(self)
@@ -31,11 +30,10 @@ class Menu(tk.Frame):
     def draw_button(self, col: int, name: str, com):
         """
         Draws a button in the menu bar.
-
         Args:
-            col (int): The column where the button should be placed in the menu bar.
+            col (int): The column where the button should be placed.
             name (str): The text label of the button.
-            com (function): The function to be executed when the button is clicked.
+            com (function): The function to be executed on the button click.
 
         """
         frame = tk.Frame(
@@ -52,9 +50,8 @@ class Menu(tk.Frame):
     def draw_moves(self, col: int):
         """
         Draws the moves count in the menu bar.
-
         Args:
-            col (int): The column where the moves counter should be placed in the menu bar.
+            col (int): The column where the moves counter should be placed.
 
         """
         frame = tk.Frame(self.frame, bg=BLACK,
@@ -69,7 +66,6 @@ class Menu(tk.Frame):
     def update_moves(self, moves: int):
         """
         Updates the moves count displayed in the menu bar.
-
         Args:
             moves (int): The new count of moves.
 

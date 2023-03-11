@@ -22,7 +22,7 @@ class IDAStar:
                 None
 
     def start(self):
-        """Initializes algorithm's starting position and data structures if groups have been
+        """Initializes algorithms starting position and data structures if groups have been
         assigned. Then iterates with new bound values until Puzzle is solved.
 
         Returns:

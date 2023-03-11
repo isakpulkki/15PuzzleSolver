@@ -28,7 +28,6 @@ class Application(tk.Tk):
         self.puzzle.set_numbers()
         self.puzzle.shuffle_board(999)
         self.width = 600
-        self.moves = 0
         self.menu = Menu(self.width, 40, self)
         self.idastar = IDAStar(self.puzzle)
         self.board = Board(self.width, self)

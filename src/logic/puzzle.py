@@ -23,7 +23,6 @@ class Puzzle:
 
     def move_number(self, direction: list):
         """Moves a number from some direction to the blank position.
-
         Args:
             direction (list): x and y coordinates to move to
         """
@@ -39,9 +38,8 @@ class Puzzle:
 
     def shuffle_board(self, times: int):
         """Shuffles the board by moving pieces in random order.
-
         Args:
-            times (int): how many times to move the pieces
+            times (int): How many times to move the pieces.
         """
         for _ in range(times):
             self.move_number(self.directions[randrange(4)])
@@ -49,10 +47,8 @@ class Puzzle:
     def hash(self, group):
         """This is the hash function for the pattern builder, to give each permutation
         unique hash to keep count of the visited nodes.
-
         Args:
             group (dict): This is the group of numbers which will be included in the hash.
-
         Returns:
             str: The hash as a String.
         """
@@ -68,10 +64,8 @@ class Puzzle:
     def simulate(self, direction: list):
         """This will generate a new Puzzle, and move the blank square to a new position,
         giving us a new permutation.
-
         Args:
             direction (list): Coordinates of the direction the blank square should move to.
-
         Returns:
             Puzzle: The copied Puzzle with move made.
         """
@@ -81,7 +75,6 @@ class Puzzle:
 
     def is_solved(self):
         """Checks if the Puzzle has been solved.
-
         Returns:
             bool: True if solved.
         """

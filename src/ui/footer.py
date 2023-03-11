@@ -10,10 +10,9 @@ class Footer(tk.Frame):
     def __init__(self, width: int, master):
         """
         Initializes the Info component of the GUI.
-
         Args:
-        width (int): The width of the Info bar.
-        master (Tk): The parent window of the Info bar.
+            width (int): The width of the Info bar.
+            master (Tk): The parent window of the Info bar.
     """
         tk.Frame.__init__(self)
         self.width = width

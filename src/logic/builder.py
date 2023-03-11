@@ -8,7 +8,6 @@ class PatternBuilder():
     def __init__(self,  group: dict, size=4):
         """Intializes the pattern database builder with Puzzle, sets it numbers without shuffling.
         Sets moves from the starting position to 0, and initializes a new group with the blank tile.
-
         Args:
             group (dict): the group of numbers of the Puzzle included in this pattern.
         """
@@ -25,10 +24,9 @@ class PatternBuilder():
 
     def build_patterns(self):
         """Applies BFS to all permutations of the Puzzle within the group, starting from
-        the solved state. Uses a queue to store each permutation and its previous direction.
+        the solved state. Storess each permutation and its previous direction.
         Checks for previously visited permutations and adds new ones only if the moved piece
         is in the group and the other moves are in the same group.
-
         Returns:
             dict: This is the closed list with all of the permutations of the group.
         """
@@ -55,7 +53,6 @@ class PatternBuilder():
     def visit(self, puzzle: Puzzle):
         """Checks if permutation with the blank tile has been visited.
         If not, adds Puzzle without blank tile to closed list with the number of moves made.
-
         Returns:
             bool: If the permutation has not been self.visited_list.
         """
@@ -74,8 +71,8 @@ class PatternBuilder():
 
 def main(): # pragma: no cover
     """This is the main function of the pattern builder. You can set different groupings
-    if you want to. The patterns are independent, so they can be assigned to their own
-    processes. This function also stores the pattern data to a file for later use.
+    if you want to. They are processed in parallel.
+    This function also stores the pattern data to a file for later use.
     """
     patterns = [PatternBuilder({1, 2, 3, 4, 7}), PatternBuilder({5, 6, 9, 10, 13}),
                 PatternBuilder({8, 11, 12, 14, 15})]
