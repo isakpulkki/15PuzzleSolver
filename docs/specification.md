@@ -2,8 +2,6 @@
 
 The goal of this project is to create a GUI program that allows the user to play the 15 Puzzle game. The program could display the optimal moves required to solve the Puzzle with Iterative Deepening A* algorithm using additive pattern database as heuristics.
 
-I am also capable of programming in Java and can also do the peer reviews for those projects. I am a student for  bachelor’s in computer science. Documentation is done using Markdown.
-
 ## Algorithms and Time Complexity
 
 The program will utilize Python and IDA* algorithm with heuristics to discover the optimal solution to the n-Puzzle problem. Initially, the heuristic function chosen was Manhattan distance and linear conflicts. However, due to the full pattern database's size for the 15 Puzzle, the program will use the additive pattern database. The pattern builder will adopt a double-ended queue and hashmaps for nodes storage.

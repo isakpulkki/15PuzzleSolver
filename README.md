@@ -35,13 +35,4 @@ If you wish, you can customize the database by modifying the code in [builder.py
 * [Implementation](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/implementation.md)
 * [Testing](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/testing.md)
 
-## Raports
-
-* [Week 1](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week1.md)
-* [Week 2](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week2.md)
-* [Week 3](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week3.md)
-* [Week 4](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week4.md)
-* [Week 5](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week5.md)
-* [Week 6](https://github.com/isakpulkki/15PuzzleSolver/blob/main/docs/week6.md)
-
 
