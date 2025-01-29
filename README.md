@@ -8,7 +8,7 @@ To achieve this, the application uses the Iterative Deepening A* algorithm, whic
 
 ## Instructions
 
-To run this application, you must have Python3 and [Poetry](https://python-poetry.org) installed. Get the zipped file [here](https://github.com/isakpulkki/15PuzzleSolver/releases/tag/1.0) which includes a database with (6, 6, 3) groupings, or clone the repository to your preferred location which has a database with (5, 5, 5) groupings. 
+To run this application, you must have Python3, Tkinter and [Poetry](https://python-poetry.org) installed. Get the zipped file [here](https://github.com/isakpulkki/15PuzzleSolver/releases/tag/1.0) which includes a database with (6, 6, 3) groupings, or clone the repository to your preferred location which has a database with (5, 5, 5) groupings. 
 
 ```bash
 # Install dependencies
